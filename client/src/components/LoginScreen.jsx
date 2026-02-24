@@ -8,7 +8,7 @@ const LoginScreen = ({ onLogin }) => {
 
     const handleLogin = () => {
         setLoading(true);
-        fetch(`${import.meta.env.VITE_API_URL}login`, {
+        fetch(`${import.meta.env.VITE_API_URL}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
