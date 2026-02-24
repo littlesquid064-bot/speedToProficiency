@@ -105,16 +105,16 @@ const App = () => {
 
         setCurrentUserEmail(data.email);
         setProfile(data.profile);
-        fetch(`/api/questions/self-rating/${data.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}questions/self-rating/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, self_q: q })));
-        fetch(`/api/questions/test/${data.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}questions/test/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, test_q: q })));
-        fetch(`/api/questions/subjective/${data.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}questions/subjective/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, subjective_q: q })));
-        fetch(`/api/assessment-sources/${data.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}assessment-sources/${data.email}`)
             .then(res => res.json())
             .then(d => setDataSources(d.sources || []));
         navigate('/genie-intro');
@@ -168,7 +168,7 @@ const App = () => {
     };
 
     const submitAssessment = (navigate) => {
-        fetch('/api/submit-assessment', {
+        fetch(`${import.meta.env.VITE_API_URL}submit-assessment`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -182,7 +182,7 @@ const App = () => {
             .then(data => {
                 setResults(data.results);
                 setSourceBreakdown(data.sourceBreakdown || {});
-                fetch(`/api/dashboard/${currentUserEmail}`)
+                fetch(`${import.meta.env.VITE_API_URL}dashboard/${currentUserEmail}`)
                     .then(res => res.json())
                     .then(d => {
                         setScenarioData(p => ({
