@@ -1,36 +1,64 @@
-# Speed to Proficiency Refactored
+# Speed to Proficiency
 
-This project has been refactored into a Client/Server architecture.
+Speed to Proficiency is a comprehensive learning and assessment platform built on a modern Client/Server architecture. It enables users to evaluate their professional skills through self-assessments, knowledge tests, and AI-driven scenario analysis, providing a personalized dashboard with recommended learning modules and career paths.
 
-## Structure
+## Architecture
 
-- `backend/`: Node.js Express backend serving API and data.
-- `frontend/`: React (Vite) frontend.
+The project is split into two primary components:
 
-## Setup & Run
+- `client/` — A React frontend built with Vite for assessments and dashboard visualization.
+- `server/` — A Node.js Express backend handling authentication, assessment content, proficiency evaluation, and AI scenario analysis.
 
-### 1. Backend
+## Getting Started
+
+### Prerequisites
+
+- Node.js v16 or higher
+- npm
+
+### Server Setup
 
 ```bash
-cd backend
+cd server
 npm install
 npm run dev
 ```
 
-Server runs on http://localhost:5000
+The server runs on `http://localhost:5000`. Add a `.env` file with the necessary API keys (e.g., `LITELLM_API_KEY`) to enable AI evaluations.
 
-### 2. Frontend
+### Client Setup
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
 
-Client runs on http://localhost:5173
+The client is accessible at `http://localhost:5173`.
+
+## Application Flow
+
+1. **Authentication** — Users log in with demo credentials (e.g., `priya.sharma@acme.com`). The system loads a scenario based on the user's role.
+2. **Genie Intro** — A personalized introduction to the proficiency journey.
+3. **Self-Rating** — Users rate their confidence across core competencies.
+4. **Knowledge Test** — Objective questions to validate technical and theoretical understanding.
+5. **Scene Analysis** — AI-evaluated business scenarios where users respond to professional challenges.
+6. **Data Integration** — The system syncs data from Microsoft Teams, CRM, and Mentor Feedback.
+7. **Dashboard** — Final view with real-time proficiency scores, recommended learning paths, and career trajectory.
 
 ## Features
 
-- **Login**: Use `priya.sharma@acme.com` or other demo emails available in the login screen.
-- **Assessment**: Self-rating and Knowledge tests are validated against backend scenarios.
-- **Dashboard**: Displays calculated results, recommended modules, and career path from backend.
+- **5-Source Proficiency Model** — Scores weighted across Self-Assessment, Knowledge Tests, Teams Activity, CRM Data, and Mentor Feedback.
+- **AI-Powered Evaluation** — LLMs provide real-time feedback and scores for subjective scenario responses.
+- **Personalized Learning Paths** — Modules recommended dynamically based on assessment results.
+- **Responsive Dashboard** — Visualizes skill gaps and progress through interactive UI components.
+- **Multi-Role Support** — Tailored scenarios for Technical Leads, Sales Directors, and Architecture roles.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React, Vite, Vanilla CSS |
+| Backend | Node.js, Express, Axios |
+| AI | LiteLLM (Llama-based models) |
+| Data | JSON-based scenario management |
