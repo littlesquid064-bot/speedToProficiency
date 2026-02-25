@@ -43,7 +43,7 @@ const Header = ({ user, onLogout }) => {
                         Speed to Proficiency
                     </h1>
                     <span style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '500' }}>
-                        Intelligent Learning Platform
+                        Intelligent Learning Ecosystem
                     </span>
                 </div>
             </div>
